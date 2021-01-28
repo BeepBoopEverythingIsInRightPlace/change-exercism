@@ -1,10 +1,15 @@
-/*
+import java.util.ArrayList;
+import java.util.List;
 
-Since this exercise has a difficulty of > 4 it doesn't come
-with any starter implementation.
-This is so that you get to practice creating classes and methods
-which is an important part of programming in Java.
+public class ChangeCalculator {
 
-Please remove this comment when submitting your solution.
+    public ChangeCalculator(List coins) {
 
-*/
+    }
+
+    public List computeMostEfficientChange(int i) {
+        ArrayList change = new ArrayList();
+        change.add(i);
+        return change;
+    }
+}
