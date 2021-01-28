@@ -3,12 +3,12 @@ import java.util.List;
 
 public class ChangeCalculator {
 
-    public ChangeCalculator(List coins) {
+    public ChangeCalculator(List<Integer> coins) {
 
     }
 
-    public List computeMostEfficientChange(int i) {
-        ArrayList change = new ArrayList();
+    public List<Integer> computeMostEfficientChange(int i) {
+        List<Integer> change = new ArrayList<>();
         change.add(i);
         return change;
     }
