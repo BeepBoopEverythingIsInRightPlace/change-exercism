@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ChangeCalculator {
@@ -9,19 +11,28 @@ public class ChangeCalculator {
         this.coins = coins;
     }
 
-    //please refactor me (i am working for fist test only)
+
     public List<Integer> computeMostEfficientChange(int changeValue) {
-        List<Integer> change = new ArrayList<>();
-        boolean found = false;      //please kill me
-        for (int i = 0; i < coins.size(); i++) {
-            for (int j = 0; j < coins.size(); j++) {
-                if (changeValue == coins.get(i) + coins.get(j) && !found) {     //suicide.commit()
-                    change.add(coins.get(i));
-                    change.add(coins.get(j));
-                    found = true;
-                }
-            }
+        int numOfAvailableCoins = coins.size();
+        List<Integer> T = new ArrayList<>();
+        T.add(0);
+        for (int i = 1; i <= changeValue; i++) {
+            T.add(i, Integer.MAX_VALUE);  //Infinity
         }
-        return change;
+
+        for (int i = 0; i < numOfAvailableCoins; i++) {
+            int coinValue = coins.get(i);
+
+            for (int j = 0; j <= changeValue - coinValue; j++) {
+                if (T.get(j) < Integer.MAX_VALUE)
+                    if (T.get(j) + 1 < T.get(j + coinValue))
+                        T.set(j + coinValue, T.get(j) + 1);
+            }
+
+        }
+
+        int numOfChangeCoins = T.get(T.size());
+
+        return T;
     }
 }
