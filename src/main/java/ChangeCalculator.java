@@ -15,9 +15,11 @@ public class ChangeCalculator {
     public List<Integer> computeMostEfficientChange(int changeValue) {
         int numOfAvailableCoins = coins.size();
         List<Integer> T = new ArrayList<>();
-        T.add(0);
+        T.add(0);   //"recursive" stop
+        // wartości początkowe
+        // lista T musi mieć tyle pól ile wynosi "reszta"
         for (int i = 1; i <= changeValue; i++) {
-            T.add(i, Integer.MAX_VALUE);  //Infinity
+            T.add(i, Integer.MAX_VALUE);
         }
 
         for (int i = 0; i < numOfAvailableCoins; i++) {
@@ -25,8 +27,9 @@ public class ChangeCalculator {
 
             for (int j = 0; j <= changeValue - coinValue; j++) {
                 if (T.get(j) < Integer.MAX_VALUE)
-                    if (T.get(j) + 1 < T.get(j + coinValue))
-                        T.set(j + coinValue, T.get(j) + 1);
+                    if (T.get(j) + 1 < T.get(j + coinValue)) {
+                        T.set(j + coinValue, T.get(j) + 1); //dodajemy jeden, bo używamy monety
+                    }
             }
 
         }
