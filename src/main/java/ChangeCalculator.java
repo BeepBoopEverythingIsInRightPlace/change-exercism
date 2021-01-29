@@ -3,13 +3,25 @@ import java.util.List;
 
 public class ChangeCalculator {
 
-    public ChangeCalculator(List<Integer> coins) {
+    private final List<Integer> coins;
 
+    public ChangeCalculator(List<Integer> coins) {
+        this.coins = coins;
     }
 
-    public List<Integer> computeMostEfficientChange(int i) {
+    //please refactor me (i am working for fist test only)
+    public List<Integer> computeMostEfficientChange(int changeValue) {
         List<Integer> change = new ArrayList<>();
-        change.add(i);
+        boolean found = false;      //please kill me
+        for (int i = 0; i < coins.size(); i++) {
+            for (int j = 0; j < coins.size(); j++) {
+                if (changeValue == coins.get(i) + coins.get(j) && !found) {     //suicide.commit()
+                    change.add(coins.get(i));
+                    change.add(coins.get(j));
+                    found = true;
+                }
+            }
+        }
         return change;
     }
 }

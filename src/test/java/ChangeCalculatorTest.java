@@ -19,7 +19,7 @@ public class ChangeCalculatorTest {
                 changeCalculator.computeMostEfficientChange(25));
     }
 
-    @Ignore("Remove to run test")
+    //@Ignore("Remove to run test")
     @Test
     public void testChangeThatMustBeGivenInMultipleCoins() {
         ChangeCalculator changeCalculator = new ChangeCalculator(asList(1, 5, 10, 25, 100));
