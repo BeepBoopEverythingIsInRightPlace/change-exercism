@@ -40,7 +40,7 @@ public class ChangeCalculatorTest {
                 changeCalculator.computeMostEfficientChange(23));
     }
 
-    @Ignore("Remove to run test")
+    //@Ignore("Remove to run test")
     @Test
     // https://en.wikipedia.org/wiki/Change-making_problem#Greedy_method
     public void testLowerElbonianCurrency() {
@@ -51,7 +51,7 @@ public class ChangeCalculatorTest {
                 changeCalculator.computeMostEfficientChange(63));
     }
 
-    @Ignore("Remove to run test")
+    //@Ignore("Remove to run test")
     @Test
     public void testLargeAmountOfChange() {
         ChangeCalculator changeCalculator = new ChangeCalculator(asList(1, 2, 5, 10, 20, 50, 100));
@@ -61,7 +61,7 @@ public class ChangeCalculatorTest {
                 changeCalculator.computeMostEfficientChange(999));
     }
 
-    @Ignore("Remove to run test")
+    //@Ignore("Remove to run test")
     @Test
     // https://en.wikipedia.org/wiki/Change-making_problem#Greedy_method
     public void testPossibleChangeWithoutUnitCoinAvailable() {
@@ -72,7 +72,7 @@ public class ChangeCalculatorTest {
                 changeCalculator.computeMostEfficientChange(21));
     }
 
-    @Ignore("Remove to run test")
+    //@Ignore("Remove to run test")
     @Test
     // https://en.wikipedia.org/wiki/Change-making_problem#Greedy_method
     public void testAnotherPossibleChangeWithoutUnitCoinAvailable() {
