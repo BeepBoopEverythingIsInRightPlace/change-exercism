@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class ChangeCalculator {
 
@@ -22,9 +19,7 @@ public class ChangeCalculator {
             T.add(i, Integer.MAX_VALUE);
         }
 
-        for (int i = 0; i < numOfAvailableCoins; i++) {
-            int coinValue = coins.get(i);
-
+        for (int coinValue : coins) {
             for (int j = 0; j <= changeValue - coinValue; j++) {
                 if (T.get(j) < Integer.MAX_VALUE)
                     if (T.get(j) + 1 < T.get(j + coinValue)) {
@@ -34,8 +29,23 @@ public class ChangeCalculator {
 
         }
 
-        int numOfChangeCoins = T.get(T.size());
+        int numOfChangeCoins = T.get(T.size() - 1);
+        int guessedChangeValue = 0;
+        List<Integer> coinGuesses = null;
+        Random random = new Random();
+        while (guessedChangeValue != changeValue) {
+            guessedChangeValue = 0;
+            coinGuesses = new ArrayList<>();
+            for (int i = 0; i < numOfChangeCoins; i++) {
+                int rndCoin = coins.get(random.nextInt(coins.size()));
+                coinGuesses.add(rndCoin);
+            }
+            for (int coinValue : coinGuesses) {
+                guessedChangeValue += coinValue;
+            }
+        }
 
-        return T;
+
+        return coinGuesses;
     }
 }
