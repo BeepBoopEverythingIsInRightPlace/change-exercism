@@ -12,8 +12,8 @@ public class ChangeCalculator {
     }
 
     public List<Integer> computeMostEfficientChange(int change) {
-        if (change == 0) return null;
-        if (change < 0) throw new IllegalArgumentException();
+        if (change == 0) return Collections.emptyList();
+        if (change < 0) throw new IllegalArgumentException("Negative totals are not allowed.");
         for (int i = coins.size() - 1; i >= 0; i--) {
             if (change >= coins.get(i)) {
                 List<Integer> output = new ArrayList<>();
@@ -22,11 +22,15 @@ public class ChangeCalculator {
                 computeMostEfficientChange(currentChange, output);
             }
         }
+        if (this.output.isEmpty()) {
+            throw new IllegalArgumentException("The total " + change + " cannot be represented in the given currency.");
+        }
         Collections.sort(this.output);
         return this.output;
     }
 
     public void computeMostEfficientChange(int change, List<Integer> output) {
+        System.out.println(output);
         if (change == 0) {
             this.output = output;
         }
