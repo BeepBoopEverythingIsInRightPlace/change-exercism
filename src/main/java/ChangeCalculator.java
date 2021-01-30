@@ -10,14 +10,13 @@ public class ChangeCalculator {
 
 
     public List<Integer> computeMostEfficientChange(int changeValue) {
-        int numOfAvailableCoins = coins.size();
-        List<Integer> T = new ArrayList<>();
-        T.add(0);   //"recursive" stop
-        // wartości początkowe
-        // lista T musi mieć tyle pól ile wynosi "reszta"
-        for (int i = 1; i <= changeValue; i++) {
-            T.add(i, Integer.MAX_VALUE);
-        }
+        List<Integer> T = getInfoHowManyCoins(changeValue);
+
+        return pickCoins(changeValue, T);
+    }
+
+    private List<Integer> getInfoHowManyCoins(int changeValue) {
+        List<Integer> T = prepareSpecialList(changeValue);
 
         for (int coinValue : coins) {
             for (int j = 0; j <= changeValue - coinValue; j++) {
@@ -28,24 +27,37 @@ public class ChangeCalculator {
             }
 
         }
+        return T;
+    }
 
+    private List<Integer> prepareSpecialList(int changeValue) {
+        List<Integer> T = new ArrayList<>(changeValue);
+        T.add(0);   //"recursive" stop
+        // wartości początkowe
+        // lista T musi mieć tyle pól ile wynosi "reszta"
+        for (int i = 1; i <= changeValue; i++) {
+            T.add(Integer.MAX_VALUE);
+        }
+        return T;
+    }
+
+    private List<Integer> pickCoins(int changeValue, List<Integer> T) {
         int numOfChangeCoins = T.get(T.size() - 1);
         int guessedChangeValue = 0;
         List<Integer> coinGuesses = null;
         Random random = new Random();
+
         while (guessedChangeValue != changeValue) {
             guessedChangeValue = 0;
             coinGuesses = new ArrayList<>();
+
             for (int i = 0; i < numOfChangeCoins; i++) {
                 int rndCoin = coins.get(random.nextInt(coins.size()));
                 coinGuesses.add(rndCoin);
+                guessedChangeValue += rndCoin;
             }
-            for (int coinValue : coinGuesses) {
-                guessedChangeValue += coinValue;
-            }
+
         }
-
-
         return coinGuesses;
     }
 }
