@@ -39,7 +39,7 @@ public class ChangeCalculator {
             for (int i = coins.size() - 1; i >= 0; i--) {
                 List<Integer> currentOutput = new ArrayList<>(output);
                 Collections.copy(currentOutput, output);
-                if (change >= coins.get(i)) {
+                if (change >= coins.get(i) && coins.get(i) <= output.get(output.size()-1)) {
                     currentOutput.add(coins.get(i));
                     int currentChange = change - coins.get(i);
                     computeMostEfficientChange(currentChange, currentOutput);
