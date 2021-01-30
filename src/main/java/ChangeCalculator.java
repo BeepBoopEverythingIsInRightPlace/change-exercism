@@ -58,6 +58,13 @@ public class ChangeCalculator {
             }
 
         }
+        sortIt(coinGuesses);
         return coinGuesses;
+    }
+
+    private void sortIt(List<Integer> coinGuesses) {
+        if (coinGuesses != null) {
+            Collections.sort(coinGuesses);
+        }
     }
 }
