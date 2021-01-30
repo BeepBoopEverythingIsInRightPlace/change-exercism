@@ -30,7 +30,6 @@ public class ChangeCalculator {
     }
 
     public void computeMostEfficientChange(int change, List<Integer> output) {
-        System.out.println(output);
         if (change == 0) {
             this.output = output;
         }

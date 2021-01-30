@@ -135,13 +135,4 @@ public class ChangeCalculatorTest {
             .hasMessage("Negative totals are not allowed.");
     }
 
-    @Test
-    public void xd() {
-        ChangeCalculator changeCalculator = new ChangeCalculator(asList(1, 20, 50, 80, 100));
-
-        assertEquals(
-                asList(80, 80),
-                changeCalculator.computeMostEfficientChange(160));
-    }
-
 }
