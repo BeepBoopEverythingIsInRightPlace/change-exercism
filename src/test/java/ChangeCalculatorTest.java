@@ -61,7 +61,7 @@ public class ChangeCalculatorTest {
                 changeCalculator.computeMostEfficientChange(999));
     }
 
-    @Ignore("Remove to run test")
+    //@Ignore("Remove to run test")
     @Test
     // https://en.wikipedia.org/wiki/Change-making_problem#Greedy_method
     public void testPossibleChangeWithoutUnitCoinAvailable() {

@@ -28,20 +28,20 @@ public class ChangeCalculator {
 
     public void computeMostEfficientChange(int change, List<Integer> output) {
         if (change == 0) {
-            if (this.output.isEmpty() || output.size() < this.output.size())
-            {
-                this.output = output;
-                System.out.println(output);
+            this.output = output;
+        }
+        if(output.size() < this.output.size() || this.output.isEmpty())
+        {
+            for (int i = coins.size() - 1; i >= 0; i--) {
+                List<Integer> currentOutput = new ArrayList<>(output);
+                Collections.copy(currentOutput, output);
+                if (change >= coins.get(i)) {
+                    currentOutput.add(coins.get(i));
+                    int currentChange = change - coins.get(i);
+                    computeMostEfficientChange(currentChange, currentOutput);
+                }
             }
         }
-        for (int i = coins.size() - 1; i >= 0; i--) {
-            List<Integer> currentOutput = new ArrayList<>(output);
-            Collections.copy(currentOutput, output);
-            if (change >= coins.get(i)) {
-                currentOutput.add(coins.get(i));
-                int currentChange = change - coins.get(i);
-                computeMostEfficientChange(currentChange, currentOutput);
-            }
-        }
+
     }
 }
