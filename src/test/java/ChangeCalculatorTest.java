@@ -83,7 +83,7 @@ public class ChangeCalculatorTest {
                 changeCalculator.computeMostEfficientChange(27));
     }
 
-    @Ignore("Remove to run test")
+    //@Ignore("Remove to run test")
     @Test
     public void testZeroChange() {
         ChangeCalculator changeCalculator = new ChangeCalculator(asList(1, 5, 10, 21, 25));
@@ -93,7 +93,7 @@ public class ChangeCalculatorTest {
                 changeCalculator.computeMostEfficientChange(0));
     }
 
-    @Ignore("Remove to run test")
+    //@Ignore("Remove to run test")
     @Test
     public void testChangeLessThanSmallestCoinInCurrencyCannotBeRepresented() {
         ChangeCalculator changeCalculator = new ChangeCalculator(asList(5, 10));
@@ -107,7 +107,7 @@ public class ChangeCalculatorTest {
             .hasMessage("The total 3 cannot be represented in the given currency.");
     }
 
-    @Ignore("Remove to run test")
+    //@Ignore("Remove to run test")
     @Test
     public void testChangeLargerThanAllCoinsInCurrencyThatCannotBeRepresented() {
         ChangeCalculator changeCalculator = new ChangeCalculator(asList(5, 10));
@@ -121,7 +121,7 @@ public class ChangeCalculatorTest {
             .hasMessage("The total 94 cannot be represented in the given currency.");
     }
 
-    @Ignore("Remove to run test")
+    //@Ignore("Remove to run test")
     @Test
     public void testNegativeChangeIsRejected() {
         ChangeCalculator changeCalculator = new ChangeCalculator(asList(1, 2, 5));

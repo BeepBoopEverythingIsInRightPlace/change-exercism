@@ -10,6 +10,9 @@ public class ChangeCalculator {
 
 
     public List<Integer> computeMostEfficientChange(int changeValue) {
+        if (changeValue == 0) return Collections.emptyList();
+        if (changeValue < 0) throw new IllegalArgumentException("Negative totals are not allowed.");
+
         List<Integer> T = getInfoHowManyCoins(changeValue);
 
         return pickCoins(changeValue, T);
@@ -27,6 +30,9 @@ public class ChangeCalculator {
             }
 
         }
+        if (getLastElement(T) == Integer.MAX_VALUE)
+            throw new IllegalArgumentException("The total " + changeValue + " cannot be represented in the given currency.");
+
         return T;
     }
 
@@ -42,7 +48,7 @@ public class ChangeCalculator {
     }
 
     private List<Integer> pickCoins(int changeValue, List<Integer> T) {
-        int numOfChangeCoins = T.get(T.size() - 1);
+        int numOfChangeCoins = getLastElement(T);
         int guessedChangeValue = 0;
         List<Integer> coinGuesses = null;
         Random random = new Random();
@@ -60,11 +66,16 @@ public class ChangeCalculator {
         }
         sortIt(coinGuesses);
         return coinGuesses;
+
     }
 
     private void sortIt(List<Integer> coinGuesses) {
         if (coinGuesses != null) {
             Collections.sort(coinGuesses);
         }
+    }
+
+    private Integer getLastElement(List<Integer> t) {
+        return t.get(t.size() - 1);
     }
 }
